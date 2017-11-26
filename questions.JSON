@@ -1,0 +1,15 @@
+{
+  "list": [
+    {
+      "righAns": 0,
+      "answers": [
+        "good",
+        "bad",
+        "not so bad",
+        "kill me"
+      ],
+      "imagePath": null,
+      "question": "How are you?"
+    }
+  ]
+}

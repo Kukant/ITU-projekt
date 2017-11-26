@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pyuic5 -o mainWindow.py MainWindow.ui

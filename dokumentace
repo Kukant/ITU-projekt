@@ -1,0 +1,19 @@
+Soubory:
+    questions.JSON - vsechny otazky
+
+    questions_*.JSON - custom otazky (podmnozina questions.JSON, tedy jen pole cisel otazek)
+
+    history.JSON - jednoducha JSON tabulka historie testu
+    {"name": "", "score": "NUM/NUM", "time:", ""}
+
+    mainWindow.ui - soubor vygenerovan pomoci QtCreatoru
+    mainWindow.py - python trida vyrobena pomoci pyuic z .ui
+    tran - skript prelozi .ui na .py
+
+Okna:
+MainMenu
+History
+CreateTest
+TestTest
+    -Result
+
