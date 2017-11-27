@@ -1,7 +1,7 @@
 Soubory:
     questions.JSON - vsechny otazky
 
-    questions_*.JSON - custom otazky (podmnozina questions.JSON, tedy jen pole cisel otazek)
+    questions_*.JSON - custom otazky (nejen podmnozina questions.JSON)
 
     history.JSON - jednoducha JSON tabulka historie testu
     {"name": "", "score": "NUM/NUM", "time:", ""}
@@ -16,4 +16,8 @@ History
 CreateTest
 TestTest
     -Result
+
+Moje poznamky:
+/usr/lib/x86_64-linux-gnu/qt5/bin/designer
+
 
