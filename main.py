@@ -6,10 +6,15 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import glob
 import json
-from mainWindow import Ui_Form
+import mainWindow
+import CreateNewQuestionWindow
 
+class newQuestionWin(CreateNewQuestionWindow.Ui_Form):
+    pass
 
-class mainWindow(Ui_Form):
+class mainWindow(mainWindow.Ui_Form):
+    # name
+    name = "Kuky"
     # python dict with opened test
     openedTest = None
     # current question index
@@ -33,6 +38,10 @@ class mainWindow(Ui_Form):
         self.BackToTestBtn.clicked.connect(lambda: self.changePage("Test"))
         self.EndTestBtn.clicked.connect(lambda: self.changePage("Results"))
         self.ResultsListWidget.doubleClicked.connect(self.showResultAnswer)
+        self.HistoryBtn.clicked.connect(lambda: self.changePage("History"))
+        self.BackToMenuBtn.clicked.connect(lambda: self.changePage("Menu"))
+        self.BackToMenuBtn_2.clicked.connect(lambda: self.changePage("Menu"))
+        self.showUserBtn.clicked.connect(self.showUserHistory)
 
     def showResultAnswer(self):
         index = 0
@@ -62,17 +71,77 @@ class mainWindow(Ui_Form):
             self.showResultAnswer()
         elif pageName == "EndTest":
             self.stackedWidget.setCurrentWidget(self.EndTestPage)
+        elif pageName == "History":
+            self.stackedWidget.setCurrentWidget(self.HistoryPage)
+            self.generateHistory()
+
+    def showUserHistory(self):
+        user = self.usersComboBox.currentText()
+        if user == "Všichni":
+            self.generateHistory()
+        else:
+            with open("history.json") as history:
+                if history is None:
+                    return
+                history = json.load(history)
+                userHistory = []
+                for record in history["list"]:
+                    if record["name"] == user:
+                        userHistory.append(record)
+                self.generateHistoryTable(userHistory)
+
+    def generateHistory(self):
+        with open("history.json") as history:
+            if history is None:
+                return
+            history = json.load(history)
+            allUsers = ["Všichni"]
+            for record in history["list"]:
+                if record["name"] not in allUsers:
+                    allUsers.append(record["name"])
+
+            self.usersComboBox.clear()
+            self.usersComboBox.addItems(allUsers)
+            self.generateHistoryTable(history["list"])
+
+    def generateHistoryTable(self, listOfResults):
+        self.historyTable.clearContents()
+        for i, record in enumerate(listOfResults):
+            if i == 20:
+                break
+            name = QtWidgets.QTableWidgetItem()
+            name.setText(record["name"])
+            self.historyTable.setItem(i, 0, name)
+            score = QtWidgets.QTableWidgetItem()
+            score.setText(str(record["score"] * 100)[0:5] + " %")
+            if record["score"] > 0.75:
+                score.setBackground(QtGui.QColor(178, 255, 178))
+            else:
+                score.setBackground(QtGui.QColor(255, 178, 178))
+            self.historyTable.setItem(i, 1, score)
+
 
     def generateResults(self):
+        # add result to result file
+        self.addToHistory()
+        self.ResultsListWidget.clear()
+
         for i, question in enumerate(self.openedTest["list"]):
-            item = QtWidgets.QListWidgetItem(question["question"][0:15])
+            itemText = question["question"][0:30]
+            if len(itemText) == 15:
+                itemText = itemText + "..."
+            item = QtWidgets.QListWidgetItem(itemText)
             if question["correctAns"] == self.answers[i]: # if true
-                item.setBackground(QtGui.QColor(52, 150, 62))
+                item.setBackground(QtGui.QColor(178, 255, 178))
             else:
-                item.setBackground(QtGui.QColor(255, 89, 89))
+                item.setBackground(QtGui.QColor(255, 178, 178))
             self.ResultsListWidget.addItem(item)
 
     def generateTest(self):
+        if self.nameLineEdit.text() == "":
+            return
+        else:
+            self.name = self.nameLineEdit.text()
         if self.listWidget.currentItem() is not None:
             fileName = self.listWidget.currentItem().text()
             self.openedTest = json.load(open(fileName))
@@ -82,6 +151,8 @@ class mainWindow(Ui_Form):
             self.answers = [None] * len(self.openedTest["list"])
 
     def chooseTestGenerator(self):
+        self.nameLineEdit.setText("")
+        self.listWidget.clear()
         allTests = glob.glob("*.JSON")
         self.listWidget.addItems(allTests)
 
@@ -110,6 +181,18 @@ class mainWindow(Ui_Form):
     def selectAnswer(self, answerNum):
         self.answers[self.currentIndex] = answerNum
         self.setQuestion(self.currentIndex + 1)
+
+    def addToHistory(self):
+        with open("history.json") as file:
+            if file is None:  # create new file
+                fileDict = {"list": []}
+            else:
+                fileDict = json.load(file)
+            score = len([x for i, x in enumerate(self.answers) if x == self.openedTest["list"][i]["correctAns"]]) / \
+                    len(self.openedTest["list"])
+            fileDict["list"].insert(0, {"name": self.name, "score": score})
+            with open("history.json", "w") as f:
+                f.write(json.dumps(fileDict, indent=2))
 
 
 if __name__ == "__main__":
