@@ -1,7 +1,7 @@
 {
   "list": [
     {
-      "righAns": 0,
+      "correctAns": 0,
       "answers": [
         "good",
         "bad",
@@ -10,6 +10,18 @@
       ],
       "imagePath": "./Images/krizovatka1.png",
       "question": "How are you?"
+    },
+    {
+      "correctAns": 2,
+      "answers": [
+        "asfasfasf",
+        "bafgsgfd",
+        "notdfahdfh so bad",
+        "kilafgafl me"
+      ],
+      "imagePath": null ,
+      "question": "How are you today?"
     }
+
   ]
 }
