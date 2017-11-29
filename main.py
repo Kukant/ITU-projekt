@@ -3,16 +3,28 @@
     Autori: xkukan00, xmoros01, xpolak34
 
 """
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import glob
 import json
 import mainWindow
 import CreateNewQuestionWindow
 
-class newQuestionWin(CreateNewQuestionWindow.Ui_Form):
-    pass
 
-class mainWindow(mainWindow.Ui_Form):
+class newQuestionWin(CreateNewQuestionWindow.Ui_Form):
+    def initButtons(self):
+        self.pushButton.clicked.connect(self.openFileBrowser)
+
+    def openFileBrowser(self):
+        filters = "Images (*.png *.xpm *.jpg)"
+        selected_filter = "Images (*.png *.xpm *.jpg)"
+        dialog = QtWidgets.QFileDialog()
+        # returns tuple (folder path, sth)
+        folder_path = dialog.getOpenFileName(None, "Select image file", None, filters, selected_filter)[0]
+        self.lineEdit.setText(folder_path)
+
+
+class mainWin(mainWindow.Ui_Form):
     # name
     name = "Kuky"
     # python dict with opened test
@@ -21,10 +33,44 @@ class mainWindow(mainWindow.Ui_Form):
     currentIndex = 0
     # arr of answers
     answers = []
+    # all questions (file questions.JSON)
+    allQuestions = []
 
     def initWindow(self):
         self.changePage("Menu")
+        self.newQuestionWindow = QtWidgets.QWidget()
+        self.newQuestionUi = newQuestionWin()
+        self.newQuestionUi.setupUi(self.newQuestionWindow)
+        self.newQuestionUi.initButtons()
+        self.newQuestionUi.pushButton_2.clicked.connect(self.saveNewQuestion)
         self.initButtons()
+        # self.newQuestionWindow.show()
+
+    def saveNewQuestion(self):
+        ans0 = self.newQuestionUi.Answer0.toPlainText()
+        ans1 = self.newQuestionUi.Answer1.toPlainText()
+        ans2 = self.newQuestionUi.Answer2.toPlainText()
+        ans3 = self.newQuestionUi.Answer3.toPlainText()
+        question = self.newQuestionUi.Question.toPlainText()
+        corrAns = self.newQuestionUi.spinBox.value().__str__()
+        picture = self.newQuestionUi.lineEdit.text()
+        newQuestion = {
+                      "correctAns": corrAns,
+                      "answers": [ans0, ans1, ans2, ans3],
+                      "imagePath": picture if picture != "" else None,
+                      "question": question
+                      }
+        self.newQuestionHandler("addNew", newQuestion)
+        self.newQuestionWindow.hide()
+
+    def openNewQuestion(self):
+        self.newQuestionUi.Answer0.setText("")
+        self.newQuestionUi.Answer1.setText("")
+        self.newQuestionUi.Answer2.setText("")
+        self.newQuestionUi.Answer3.setText("")
+        self.newQuestionUi.Question.setText("")
+        self.newQuestionUi.spinBox.setValue(0)
+        self.newQuestionWindow.show()
 
     def initButtons(self):
         self.StartTestBtn.clicked.connect(lambda: self.changePage("ChooseTest"))
@@ -42,6 +88,25 @@ class mainWindow(mainWindow.Ui_Form):
         self.BackToMenuBtn.clicked.connect(lambda: self.changePage("Menu"))
         self.BackToMenuBtn_2.clicked.connect(lambda: self.changePage("Menu"))
         self.showUserBtn.clicked.connect(self.showUserHistory)
+        self.CreateTestBtn.clicked.connect(lambda: self.changePage("CreateNew"))
+        self.CreateNewQuestionBtn.clicked.connect(self.openNewQuestion)
+
+
+    def newQuestionHandler(self, whatToDo, arg = None):
+        if whatToDo == "addNew":
+            self.allQuestions.append(arg)
+            newItem = QtWidgets.QListWidgetItem()
+            newItem.setText(arg["question"])
+            self.AllQuestionsList.addItem(newItem)
+        elif whatToDo == "init":
+            with open("questions.JSON") as f:
+                if f is None:
+                    self.allQuestions = []
+                else:
+                    self.allQuestions = json.load(f)["list"]
+            self.AllQuestionsList.clear()
+            self.AllQuestionsList.addItems([x["question"] for x in self.allQuestions])
+            self.NewTestList.clear()
 
     def showResultAnswer(self):
         index = 0
@@ -74,6 +139,9 @@ class mainWindow(mainWindow.Ui_Form):
         elif pageName == "History":
             self.stackedWidget.setCurrentWidget(self.HistoryPage)
             self.generateHistory()
+        elif pageName == "CreateNew":
+            self.stackedWidget.setCurrentWidget(self.CreateNewPage)
+            self.newQuestionHandler("init")
 
     def showUserHistory(self):
         user = self.usersComboBox.currentText()
@@ -128,7 +196,7 @@ class mainWindow(mainWindow.Ui_Form):
 
         for i, question in enumerate(self.openedTest["list"]):
             itemText = question["question"][0:30]
-            if len(itemText) == 15:
+            if len(itemText) == 30:
                 itemText = itemText + "..."
             item = QtWidgets.QListWidgetItem(itemText)
             if question["correctAns"] == self.answers[i]: # if true
@@ -196,10 +264,9 @@ class mainWindow(mainWindow.Ui_Form):
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = mainWindow()
+    ui = mainWin()
     ui.setupUi(Form)
     ui.initWindow()
     Form.show()

@@ -445,7 +445,7 @@ p, li { white-space: pre-wrap; }
         </spacer>
        </item>
        <item row="2" column="3">
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="showUserBtn">
          <property name="text">
           <string>Ukázat</string>
          </property>
@@ -563,17 +563,17 @@ p, li { white-space: pre-wrap; }
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="page">
+     <widget class="QWidget" name="CreateNewPage">
       <layout class="QGridLayout" name="gridLayout_6">
        <item row="2" column="2">
-        <widget class="QPushButton" name="AddQuestion">
+        <widget class="QPushButton" name="AddQuestionBtn">
          <property name="text">
           <string>Přídat označenou otázku</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QPushButton" name="CreateNewQuestion">
+        <widget class="QPushButton" name="CreateNewQuestionBtn">
          <property name="text">
           <string>Vytvořit novou otázku</string>
          </property>
@@ -607,7 +607,7 @@ p, li { white-space: pre-wrap; }
         <widget class="QListWidget" name="NewTestList"/>
        </item>
        <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="RemoveQuestionBtn_2">
          <property name="text">
           <string>Odstranit</string>
          </property>
