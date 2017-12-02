@@ -35,6 +35,9 @@ class mainWin(mainWindow.Ui_Form):
     answers = []
     # all questions (file questions.JSON)
     allQuestions = []
+    # list of new test's questions
+    newQuestions = []
+
 
     def initWindow(self):
         self.changePage("Menu")
@@ -90,6 +93,10 @@ class mainWin(mainWindow.Ui_Form):
         self.showUserBtn.clicked.connect(self.showUserHistory)
         self.CreateTestBtn.clicked.connect(lambda: self.changePage("CreateNew"))
         self.CreateNewQuestionBtn.clicked.connect(self.openNewQuestion)
+        self.AddQuestionBtn.clicked.connect(lambda: self.newQuestionHandler("addExisting"))
+        self.RemoveQuestionBtn_2.clicked.connect(lambda: self.newQuestionHandler("removeFromAll"))
+        self.SaveNewTestBtn.clicked.connect(lambda: self.newQuestionHandler("saveNewTest"))
+        self.RemoveQuestionBtn.clicked.connect(lambda: self.newQuestionHandler("removeFromNew"))
 
 
     def newQuestionHandler(self, whatToDo, arg = None):
@@ -98,7 +105,15 @@ class mainWin(mainWindow.Ui_Form):
             newItem = QtWidgets.QListWidgetItem()
             newItem.setText(arg["question"])
             self.AllQuestionsList.addItem(newItem)
+            with open("questions.JSON") as allQ:
+                allQDict = json.load(allQ)
+                allQDict["list"] = self.allQuestions
+                with open("questions.JSON", "w") as fw:
+                    fw.write(json.dumps(allQDict, indent=2))
+
         elif whatToDo == "init":
+            self.newTestFileName = ""
+            self.newQuestions.clear()
             with open("questions.JSON") as f:
                 if f is None:
                     self.allQuestions = []
@@ -108,6 +123,48 @@ class mainWin(mainWindow.Ui_Form):
             self.AllQuestionsList.addItems([x["question"] for x in self.allQuestions])
             self.NewTestList.clear()
 
+        elif whatToDo == "addExisting":
+            print("adding Existing")
+            selectedLines = [x.row() for x in self.AllQuestionsList.selectedIndexes()]
+            for line in selectedLines:
+                self.newQuestions.append(self.allQuestions[line])
+            self.NewTestList.addItems([self.allQuestions[line]["question"] for line in selectedLines])
+
+        elif whatToDo == "removeFromAll":
+            if self.AllQuestionsList.currentItem() is None:
+                return
+            with open("questions.JSON") as allQ:
+                allQDict = json.load(allQ)
+                selectedLines = [x.row() for x in self.AllQuestionsList.selectedIndexes()]
+                selectedLines.sort(reverse=True) # will delete from the end
+                for line in selectedLines:
+                    del allQDict["list"][line]
+                self.AllQuestionsList.clear()
+                self.AllQuestionsList.addItems([x["question"] for x in allQDict["list"]])
+                self.allQuestions = allQDict["list"]
+                with open("questions.JSON", "w") as fw:
+                    fw.write(json.dumps(allQDict, indent=2))
+
+        elif whatToDo == "removeFromNew":
+            if self.NewTestList.currentItem() is None:
+                return
+
+            selectedLines = [x.row() for x in self.NewTestList.selectedIndexes()]
+            selectedLines.sort(reverse=True) # will delete from the end
+            for line in selectedLines:
+                del self.newQuestions[line]
+            self.NewTestList.clear()
+            self.NewTestList.addItems([x["question"] for x in self.newQuestions])
+
+        elif whatToDo == "saveNewTest":
+            if self.newTestFileName == "":
+                dialog = QtWidgets.QFileDialog()
+                self.newTestFileName = dialog.getSaveFileName(None, 'Uložit jako')[0]
+
+            with open(self.newTestFileName + ".json", "w") as fw:
+                saveDic = {"list": self.newQuestions}
+                fw.write(json.dumps(saveDic, indent=2))
+
     def showResultAnswer(self):
         index = 0
         if self.ResultsListWidget.currentRow() is not None:
@@ -115,7 +172,7 @@ class mainWin(mainWindow.Ui_Form):
         questions = self.openedTest["list"]
         self.ResultsQuestion.setText(questions[index]["question"])
         self.ResultsYourAnswer.setText(questions[index]["answers"][self.answers[index]])
-        self.ResultsCorrectAnswer.setText(questions[index]["answers"][questions[index]["correctAns"]])
+        self.ResultsCorrectAnswer.setText(questions[index]["answers"][int(questions[index]["correctAns"])])
         if questions[index]["imagePath"] is not None:
             pixmap = QtGui.QPixmap(questions[index]["imagePath"])
             self.ResultsImage.setPixmap(pixmap.scaled(250, 250))
@@ -221,7 +278,7 @@ class mainWin(mainWindow.Ui_Form):
     def chooseTestGenerator(self):
         self.nameLineEdit.setText("")
         self.listWidget.clear()
-        allTests = glob.glob("*.JSON")
+        allTests = glob.glob("*.json")
         self.listWidget.addItems(allTests)
 
     def setQuestion(self, index):

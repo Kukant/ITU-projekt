@@ -568,7 +568,7 @@ p, li { white-space: pre-wrap; }
        <item row="2" column="2">
         <widget class="QPushButton" name="AddQuestionBtn">
          <property name="text">
-          <string>Přídat označenou otázku</string>
+          <string>Přidat označené otázky</string>
          </property>
         </widget>
        </item>
@@ -582,7 +582,7 @@ p, li { white-space: pre-wrap; }
        <item row="2" column="3" colspan="2">
         <widget class="QPushButton" name="RemoveQuestionBtn">
          <property name="text">
-          <string>Odstranit otázku</string>
+          <string>Odstranit vybrané</string>
          </property>
         </widget>
        </item>
@@ -601,10 +601,18 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="1" column="0" colspan="3">
-        <widget class="QListWidget" name="AllQuestionsList"/>
+        <widget class="QListWidget" name="AllQuestionsList">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+        </widget>
        </item>
        <item row="1" column="3" colspan="4">
-        <widget class="QListWidget" name="NewTestList"/>
+        <widget class="QListWidget" name="NewTestList">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
         <widget class="QPushButton" name="RemoveQuestionBtn_2">
