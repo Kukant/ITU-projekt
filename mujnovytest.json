@@ -1,0 +1,37 @@
+{
+  "list": [
+    {
+      "correctAns": "1",
+      "answers": [
+        "asfaf",
+        "bla",
+        "blem",
+        "blup"
+      ],
+      "imagePath": null,
+      "question": "Ahoj jak se mate"
+    },
+    {
+      "correctAns": "1",
+      "answers": [
+        "ANen\u00ed",
+        "BNev\u00edm",
+        "CNen\u00ed 2",
+        "DNen\u00ed 3"
+      ],
+      "imagePath": null,
+      "question": "Jak\u00fd je smysl \u017eivota?"
+    },
+    {
+      "correctAns": "1",
+      "answers": [
+        "neco1",
+        "neco2",
+        "neco3",
+        "neco4"
+      ],
+      "imagePath": null,
+      "question": "Ahojte"
+    }
+  ]
+}

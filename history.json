@@ -1,48 +1,68 @@
 {
   "list": [
     {
-      "name": "kkk",
-      "score": 0.5
+      "score": 0.0,
+      "name": "kokot2"
     },
     {
-      "name": "asfasf",
-      "score": 0.5
+      "score": 0.3333333333333333,
+      "name": "Kokot"
     },
     {
-      "name": "kkk",
-      "score": 1.0
+      "score": 0.0,
+      "name": "Kokot"
     },
     {
-      "name": "kkk",
-      "score": 0.5
+      "score": 0.0,
+      "name": "kokot"
     },
     {
-      "name": "Toto",
-      "score": 0.0
+      "score": 0.0,
+      "name": "kokot"
     },
     {
-      "name": "blink",
-      "score": 0.5
+      "score": 0.5,
+      "name": "kkk"
     },
     {
-      "name": "Tomas Kukan",
-      "score": 0.8
+      "score": 0.5,
+      "name": "asfasf"
     },
     {
-      "name": "Martin Hornik",
-      "score": 0.6
+      "score": 1.0,
+      "name": "kkk"
     },
     {
-      "name": "Kuky",
-      "score": 0.5
+      "score": 0.5,
+      "name": "kkk"
     },
     {
-      "name": "Moje jm\u00e9no je K\u0159i\u017en\u00edk",
-      "score": 0.5
+      "score": 0.0,
+      "name": "Toto"
     },
     {
-      "name": "Kukyy",
-      "score": 1.0
+      "score": 0.5,
+      "name": "blink"
+    },
+    {
+      "score": 0.8,
+      "name": "Tomas Kukan"
+    },
+    {
+      "score": 0.6,
+      "name": "Martin Hornik"
+    },
+    {
+      "score": 0.5,
+      "name": "Kuky"
+    },
+    {
+      "score": 0.5,
+      "name": "Moje jm\u00e9no je K\u0159i\u017en\u00edk"
+    },
+    {
+      "score": 1.0,
+      "name": "Kukyy"
     }
   ]
 }

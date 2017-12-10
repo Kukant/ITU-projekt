@@ -1,7 +1,6 @@
 """
     ITU projekt - Autoskola
     Autori: xkukan00, xmoros01, xpolak34
-
 """
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -90,6 +89,7 @@ class mainWin(mainWindow.Ui_Form):
         self.HistoryBtn.clicked.connect(lambda: self.changePage("History"))
         self.BackToMenuBtn.clicked.connect(lambda: self.changePage("Menu"))
         self.BackToMenuBtn_2.clicked.connect(lambda: self.changePage("Menu"))
+        self.BackToMenuBtn_3.clicked.connect(lambda: self.changePage("Menu"))
         self.showUserBtn.clicked.connect(self.showUserHistory)
         self.CreateTestBtn.clicked.connect(lambda: self.changePage("CreateNew"))
         self.CreateNewQuestionBtn.clicked.connect(self.openNewQuestion)
