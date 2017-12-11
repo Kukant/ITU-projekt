@@ -1,68 +1,104 @@
 {
   "list": [
     {
-      "score": 0.0,
-      "name": "kokot2"
+      "name": "Martin Komar",
+      "score": 0.6
     },
     {
-      "score": 0.3333333333333333,
-      "name": "Kokot"
+      "name": "Michal Bohuslav Bohudik",
+      "score": 0.2
     },
     {
-      "score": 0.0,
-      "name": "Kokot"
+      "name": "Michal Bohuslav Bohudik",
+      "score": 0.2
     },
     {
-      "score": 0.0,
-      "name": "kokot"
+      "name": "ttest",
+      "score": 0.2
     },
     {
-      "score": 0.0,
-      "name": "kokot"
+      "name": "Martin Hladik",
+      "score": 0.0
     },
     {
-      "score": 0.5,
-      "name": "kkk"
+      "name": "Filip Mikula",
+      "score": 0.4
     },
     {
-      "score": 0.5,
-      "name": "asfasf"
+      "name": "Tomas Dlaban",
+      "score": 0.4
     },
     {
-      "score": 1.0,
-      "name": "kkk"
+      "name": "Jakub Fiala",
+      "score": 0.0
     },
     {
-      "score": 0.5,
-      "name": "kkk"
+      "name": "ahoj",
+      "score": 0.0
     },
     {
-      "score": 0.0,
-      "name": "Toto"
+      "name": "Ahojte",
+      "score": 0.2
     },
     {
-      "score": 0.5,
-      "name": "blink"
+      "name": "Tomas Ahoj",
+      "score": 0.0
     },
     {
-      "score": 0.8,
-      "name": "Tomas Kukan"
+      "name": "Toto",
+      "score": 0.0
     },
     {
-      "score": 0.6,
-      "name": "Martin Hornik"
+      "name": "blink",
+      "score": 0.5
     },
     {
-      "score": 0.5,
-      "name": "Kuky"
+      "name": "Tomas Kukan",
+      "score": 0.8
     },
     {
-      "score": 0.5,
-      "name": "Moje jm\u00e9no je K\u0159i\u017en\u00edk"
+      "name": "Martin Hornik",
+      "score": 0.6
     },
     {
-      "score": 1.0,
-      "name": "Kukyy"
+      "name": "Kuky",
+      "score": 0.5
+    },
+    {
+      "name": "Moje jm\u00e9no je K\u0159i\u017en\u00edk",
+      "score": 0.5
+    },
+    {
+      "name": "Kuky",
+      "score": 1.0
+    },
+    {
+      "name": "Tomas Ahoj",
+      "score": 0.0
+    },
+    {
+      "name": "Toto",
+      "score": 0.52
+    },
+    {
+      "name": "blink",
+      "score": 0.85
+    },
+    {
+      "name": "Tomas Kukan",
+      "score": 0.55
+    },
+    {
+      "name": "Martin Hornik",
+      "score": 0.78
+    },
+    {
+      "name": "Kuky",
+      "score": 0.95
+    },
+    {
+      "name": "Moje jm\u00e9no je K\u0159i\u017en\u00edk",
+      "score": 0.8
     }
   ]
 }

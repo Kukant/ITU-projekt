@@ -1,59 +1,59 @@
 {
   "list": [
     {
-      "imagePath": "./Images/krizovatka1.png",
-      "question": "How are you?",
-      "correctAns": 0,
+      "question": "Tato dopravn\u00ed zna\u010dka: ",
+      "imagePath": "./Images/1.jpg",
       "answers": [
-        "good",
-        "bad",
-        "not so bad",
-        "kill me"
-      ]
+        "Upozor\u0148uje na jednokolejn\u00fd \n\u017eelezni\u010dn\u00ed p\u0159ejezd. Je-li \n\u0159idi\u010d povinen p\u0159ed \u017eelezni\u010dn\u00edm \np\u0159ejezdem zastavit vozidlo, zastav\u00ed \np\u0159ed touto zna\u010dkou.",
+        "Upozor\u0148uje na jednokolejn\u00fd \n\u017eelezni\u010dn\u00ed p\u0159ejezd. Je-li \n\u0159idi\u010d povinen p\u0159ed \u017eelezni\u010dn\u00edm \np\u0159ejezdem zastavit vozidlo, zastav\u00ed \nna m\u00edst\u011b, odkud m\u00e1 na \u017eelezni\u010dn\u00ed tra\u0165\n n\u00e1le\u017eit\u00fd rozhled.",
+        "Upozor\u0148uje na v\u00edcekolejn\u00fd \n\u017eelezni\u010dn\u00ed p\u0159ejezd, kde \nje pot\u0159eba db\u00e1t zv\u00fd\u0161en\u00e9 opatrnosti \npro p\u0159\u00edpad sou\u010dasn\u00e9ho \npr\u016fjezdu vlak\u016f z obou sm\u011br\u016f",
+        "Ani jedno."
+      ],
+      "correctAns": 0
     },
     {
+      "question": "Do \u00faseku pozemn\u00ed komunikace za touto dopravn\u00ed zna\u010dkou: ",
+      "imagePath": "./Images/2.jpg",
+      "answers": [
+        "Je zak\u00e1z\u00e1n vjezd osobn\u00edm\n automobil\u016fm.",
+        "Je zak\u00e1z\u00e1n vjezd v\u0161em \nmotorov\u00fdm vozidl\u016fm s v\u00fdjimkou \nmotocykl\u016f bez postrann\u00edho voz\u00edku.",
+        "Je zak\u00e1z\u00e1n vjezd v\u0161em \nmotorov\u00fdm vozidl\u016fm.",
+        "Ani jedno."
+      ],
+      "correctAns": 1
+    },
+    {
+      "question": "\u0158idi\u010d vozidla, kter\u00e9 zastavilo nebo st\u00e1lo a op\u011bt vyj\u00ed\u017ed\u00ed od okraje pozemn\u00ed komunikace nebo od chodn\u00edku: ",
       "imagePath": null,
-      "question": "Jak\u00fd je smysl \u017eivota?",
-      "correctAns": "1",
       "answers": [
-        "ANen\u00ed",
-        "BNev\u00edm",
-        "CNen\u00ed 2",
-        "DNen\u00ed 3"
-      ]
+        "Mus\u00ed d\u00e1vat znamen\u00ed o zm\u011bn\u011b\n sm\u011bru j\u00edzdy a nesm\u00ed ohrozit\n ani omezit ostatn\u00ed \u00fa\u010dastn\u00edky\n provozu na pozemn\u00edch komunikac\u00edch.",
+        "Nemus\u00ed d\u00e1vat znamen\u00ed o zm\u011bn\u011b\n sm\u011bru j\u00edzdy a m\u016f\u017ee\n omezit ostatn\u00ed \u00fa\u010dastn\u00edky provozu\n na pozemn\u00edch komunikac\u00edch.",
+        "Mus\u00ed d\u00e1vat znamen\u00ed o zm\u011bn\u011b\n sm\u011bru j\u00edzdy a nesm\u00ed ohrozit\n ostatn\u00ed \u00fa\u010dastn\u00edky provozu na\n pozemn\u00edch komunikac\u00edch.",
+        "Ani jedno."
+      ],
+      "correctAns": 2
     },
     {
+      "question": "P\u0159e\u010dn\u00edv\u00e1-li za sn\u00ed\u017een\u00e9 viditelnosti n\u00e1klad vozidlo vp\u0159edu nebo vzadu o v\u00edce ne\u017e 1 metr, mus\u00ed b\u00fdt p\u0159e\u010dn\u00edvaj\u00edc\u00ed konec n\u00e1kladu:",
       "imagePath": null,
-      "question": "Ahojte",
-      "correctAns": "1",
       "answers": [
-        "neco1",
-        "neco2",
-        "neco3",
-        "neco4"
-      ]
+        "Ozna\u010den \u010derven\u00fdm praporkem\n o rozm\u011brech nejm\u00e9n\u011b 30 x 30 cm a \nd\u00e1le vzadu \u010derven\u00fdm sv\u011btlem a vp\u0159edu \nneosl\u0148uj\u00edc\u00edm b\u00edl\u00fdm\n sv\u011btlem.",
+        "Ozna\u010den vzadu \u010derven\u00fdm\n sv\u011btlem a jinou ne\u017e troj\u00faheln\u00edkovou\n \u010dervenou odrazkou a vp\u0159edu neosl\u0148uj\u00edc\u00edm\n b\u00edl\u00fdm sv\u011btlem a jinou\n ne\u017e troj\u00faheln\u00edkovou b\u00edlou odrazkou.",
+        "Ozna\u010den vzadu \u010derven\u00fdm\n sv\u011btlem a troj\u00faheln\u00edkovou \u010dervenou\n odrazkou a vp\u0159edu neosl\u0148uj\u00edc\u00edm b\u00edl\u00fdm\n sv\u011btlem a troj\u00faheln\u00edkovou\n b\u00edlou odrazkou.",
+        "Ani jedno."
+      ],
+      "correctAns": 1
     },
     {
+      "question": "P\u0159i um\u011bl\u00e9m d\u00fdch\u00e1n\u00ed z plic do plic u dosp\u011bl\u00e9ho:",
       "imagePath": null,
-      "question": "Ahoj jak se mate",
-      "correctAns": "1",
       "answers": [
-        "asfaf",
-        "bla",
-        "blem",
-        "blup"
-      ]
-    },
-    {
-      "imagePath": "/home/zeusko/Plocha/ITU-projekt/Images/krizovatka1.png",
-      "question": "asgasgasg",
-      "correctAns": "2",
-      "answers": [
-        "agd",
-        "sdgdsg",
-        "sdg",
-        "agdsdg"
-      ]
+        "D\u00fdch\u00e1m frekvenc\u00ed \nalespo\u0148 20 vdech\u016f/min a v\u017edy \nse sna\u017e\u00edm o co nejv\u011bt\u0161\u00ed vdech",
+        "D\u00fdch\u00e1m \u00fapln\u011b norm\u00e1ln\u011b \nfrekvenc\u00ed 6-8 vdech\u016f/min, bez \nextr\u00e9mn\u00edho n\u00e1dechu a vdechu do \nporan\u011bn\u00e9ho",
+        "Vdechuji do plic poran\u011bn\u00e9ho\n jen obsah vzduchu ve sv\u00fdch \n\u00fastech",
+        "Ani jedno."
+      ],
+      "correctAns": 1
     }
   ]
 }

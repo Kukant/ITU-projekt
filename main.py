@@ -54,7 +54,7 @@ class mainWin(mainWindow.Ui_Form):
         ans2 = self.newQuestionUi.Answer2.toPlainText()
         ans3 = self.newQuestionUi.Answer3.toPlainText()
         question = self.newQuestionUi.Question.toPlainText()
-        corrAns = self.newQuestionUi.spinBox.value().__str__()
+        corrAns = int(self.newQuestionUi.spinBox.value().__str__())
         picture = self.newQuestionUi.lineEdit.text()
         newQuestion = {
                       "correctAns": corrAns,
@@ -182,6 +182,7 @@ class mainWin(mainWindow.Ui_Form):
     def changePage(self, pageName):
         if pageName == "Test":
             self.stackedWidget.setCurrentWidget(self.TestPage)
+            self.currentIndex = 0
         elif pageName == "Menu":
             self.stackedWidget.setCurrentWidget(self.MenuPage)
         elif pageName == "ChooseTest":
@@ -279,6 +280,8 @@ class mainWin(mainWindow.Ui_Form):
         self.nameLineEdit.setText("")
         self.listWidget.clear()
         allTests = glob.glob("*.json")
+        if "history.json" in allTests:
+            allTests.remove("history.json")
         self.listWidget.addItems(allTests)
 
     def setQuestion(self, index):
